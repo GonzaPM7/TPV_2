@@ -1,39 +1,16 @@
 #include "EggsShooter.h"
 
 EggsShooter::EggsShooter(SDLGame* game) :
-		GameObject(game) {
-	for (int i = 0; i < MAX_EGGS; i++) {
-		eggs_[i].setActive(false);
-		eggs_[i].setGame(game);
-	}
+		ObjectPool(game) {
+	
 }
 
 EggsShooter::~EggsShooter() {
 }
 
-void EggsShooter::handleInput(Uint32 time, const SDL_Event& event) {
-	for (int i = 0; i < MAX_EGGS; i++)
-		if (eggs_[i].isActive()) {
-			eggs_[i].handleInput(time, event);
-		}
-}
-
-void EggsShooter::update(Uint32 time) {
-	for (int i = 0; i < MAX_EGGS; i++)
-		if (eggs_[i].isActive()) {
-			eggs_[i].update(time);
-		}
-}
-
-void EggsShooter::render(Uint32 time) {
-	for (int i = 0; i < MAX_EGGS; i++)
-		if (eggs_[i].isActive()) {
-			eggs_[i].render(time);
-		}
-}
 
 void EggsShooter::addEgg(Vector2D pos, Vector2D vel, Vector2D acc) {
-	Egg* e = getUnusedEgg();
+	Egg* e = getUnusedObject();
 	if (e != nullptr) {
 		int h = getGame()->getServiceLocator()->getRandomGenerator()->nextInt(0, 5);
 		e->setWidth(24+h*0.8);
@@ -48,11 +25,4 @@ void EggsShooter::addEgg(Vector2D pos, Vector2D vel, Vector2D acc) {
 
 }
 
-Egg* EggsShooter::getUnusedEgg() {
-	for (int i = 0; i < MAX_EGGS; i++)
-		if (!eggs_[i].isActive()) {
-			return &eggs_[i];
-		}
 
-	return nullptr;
-}
