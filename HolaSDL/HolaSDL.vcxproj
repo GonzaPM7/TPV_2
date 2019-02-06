@@ -23,6 +23,7 @@
     <ClInclude Include="Font.h" />
     <ClInclude Include="FontsManager.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="RandomNumberGenerator.h" />
     <ClInclude Include="Resources.h" />
     <ClInclude Include="SDLAudioManager.h" />
