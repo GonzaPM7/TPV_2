@@ -20,7 +20,7 @@ private:
 };
 
 template<typename T, int SIZE>
-inline ObjectPool<T, SIZE>::ObjectPool(SDLGame* game)
+inline ObjectPool<T, SIZE>::ObjectPool(SDLGame* game) : GameObject(game)
 {
 	for (int i = 0; i < MAX_OBJECTS; i++) {
 		objects_[i].setActive(false);
