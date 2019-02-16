@@ -18,5 +18,5 @@ int SRandBasedGenerator::nextInt() {
 }
 
 int SRandBasedGenerator::nextInt(int low, int high) {
-	return low+(nextInt() % high);
+	return low+(nextInt() % abs(high-low));
 }

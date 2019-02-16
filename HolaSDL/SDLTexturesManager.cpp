@@ -31,6 +31,10 @@ bool SDLTexturesManager::init() {
 }
 
 
+Texture* SDLTexturesManager::getTexture(int tag) {
+	return textures_[tag];
+}
+
 bool SDLTexturesManager::loadFromImg(int tag, SDL_Renderer* renderer,
 		string fileName) {
 
@@ -69,8 +73,4 @@ void SDLTexturesManager::storeTexture(int tag, Texture* texture) {
 	if (curr != nullptr)
 		delete curr;
 	textures_[tag] = texture;
-}
-
-Texture* SDLTexturesManager::getTexture(int tag) {
-	return textures_[tag];
 }

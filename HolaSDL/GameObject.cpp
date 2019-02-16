@@ -1,12 +1,19 @@
 #include "GameObject.h"
+#include "Messages_defs.h"
 
 GameObject::GameObject() :
 		GameObject(nullptr) {
 }
 
 GameObject::GameObject(SDLGame* game) :
-		game_(game), active_(true), width_(), height_(), position_(), velocity_(), acceleration_(
-				0, 0), rotation_(0.0) {
+		game_(game),
+		active_(true),
+		width_(),
+		height_(),
+		position_(),
+		velocity_(),
+		acceleration_(0, 0),
+		rotation_(0.0) {
 }
 
 GameObject::~GameObject() {
@@ -48,7 +55,7 @@ void GameObject::setHeight(double height) {
 	height_ = height;
 }
 
-const Vector2D& GameObject::getPosition() const {
+Vector2D GameObject::getPosition() const {
 	return position_;
 }
 
@@ -56,7 +63,7 @@ void GameObject::setPosition(const Vector2D &pos) {
 	position_.set(pos);
 }
 
-const Vector2D& GameObject::getVelocity() const {
+Vector2D GameObject::getVelocity() const {
 	return velocity_;
 }
 
@@ -64,7 +71,7 @@ void GameObject::setVelocity(const Vector2D &vel) {
 	velocity_.set(vel);
 }
 
-const Vector2D& GameObject::getAcceleration() const {
+Vector2D GameObject::getAcceleration() const {
 	return acceleration_;
 }
 
@@ -82,5 +89,13 @@ double GameObject::getRotation() const {
 }
 
 void GameObject::setRotation(double angle) {
-	rotation_ = angle;
+	rotation_ = fmod(angle, 360.0);
+}
+
+void GameObject::receive(const void* senderObj, const msg::Message& msg) {
+	// By default objects do no do anything when receiving a message.
+	// Only those interested will implement this method
+}
+
+void GameObject::init() {
 }

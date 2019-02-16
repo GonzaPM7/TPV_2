@@ -24,6 +24,7 @@ public:
 	void setRandomGenerator(RandomNumberGenerator* randomGenerator);
 
 private:
+
 	TexturesManager* textures_;
 	AudioManager* audio_;
 	FontsManager* fonts_;

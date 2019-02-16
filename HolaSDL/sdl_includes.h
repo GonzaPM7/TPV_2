@@ -19,7 +19,7 @@
 #include <SDL2_ttf/SDL_ttf.h>
 #include <SDL2_mixer/SDL_mixer.h>
 #include <SDL2_image/SDL_image.h>
-#include <SDL2_net/SDL2_net.h>
+#include <SDL2_net/SDL_net.h>
 #else
 #error "SDL includes where not resolved correctly"
 #endif

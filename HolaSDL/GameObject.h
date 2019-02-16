@@ -2,8 +2,10 @@
 
 #include "SDLGame.h"
 #include "Vector2D.h"
+#include "Observer.h"
 
-class GameObject {
+
+class GameObject : public Observer {
 
 public:
 	GameObject();
@@ -25,17 +27,26 @@ public:
 
 	void scale(double s);
 
-	const Vector2D& getPosition() const;
+	Vector2D getPosition() const;
 	void setPosition(const Vector2D &pos);
 
-	const Vector2D& getVelocity() const;
+	Vector2D getVelocity() const;
 	void setVelocity(const Vector2D &vel);
 
-	const Vector2D& getAcceleration() const;
+	Vector2D getAcceleration() const;
 	void setAcceleration(const Vector2D &vel);
 
 	double getRotation() const;
 	void setRotation(double angle);
+
+	virtual void receive(const void* senderObj, const msg::Message& msg);
+
+	// some GameObjects cannot be initialized in the constructor,
+	// for example when we create them using the default constructor
+	// and without passing the game. This method is supposed to
+	// be called once they are ready to be initialized. The
+	// default implementation does nothing.
+	virtual void init();
 
 	// abstract methods to be implemented in sub-classes
 	virtual void handleInput(Uint32 time, const SDL_Event& event) = 0;

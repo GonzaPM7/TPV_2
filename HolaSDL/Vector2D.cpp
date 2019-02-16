@@ -55,16 +55,16 @@ double Vector2D::magnitude() const {
 Vector2D Vector2D::rotate(double degrees) {
 	Vector2D r;
 
-	degrees = fmod(degrees, 360);
-	if (degrees > 180) {
-		degrees = degrees - 360;
-	} else if (degrees <= -180) {
-		degrees = 360 + degrees;
+	degrees = fmod(degrees, 360.0);
+	if (degrees > 180.0) {
+		degrees = degrees - 360.0;
+	} else if (degrees <= -180.0) {
+		degrees = 360.0 + degrees;
 	}
 
-	assert(degrees >= -180 && degrees <= 180);
+	assert(degrees >= -180.0 && degrees <= 180.0);
 
-	double angle = degrees * M_PI / 180;
+	double angle = degrees * M_PI / 180.0;
 	double sine = sin(angle);
 	double cosine = cos(angle);
 

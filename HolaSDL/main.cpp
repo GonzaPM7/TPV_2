@@ -1,9 +1,10 @@
-#include "DemoGame.h"
+#include "AsteroidsGame.h"
 
 using namespace std;
 
 int main(int ac, char** av) {
-	DemoGame g;
+
+	AsteroidsGame g;
 	g.start();
 	return 0;
 }

@@ -19,12 +19,14 @@ public:
 		SpaceShips,
 		Airplanes,
 		Star,
-		Bird,
-		FireEgg,
+		Asteroid,
+		Badges,
+		WhiteRect,
 
 		// text
 		HelloWorld,
-		PresAnyKey,
+		PressAnyKey,
+		PressEnterToContinue,
 		GameOver
 	};
 
@@ -33,6 +35,7 @@ public:
 		Beat,
 		Cheer,
 		Boooo,
+		ImperialMarch,
 
 		// sound effects
 		Wall_Hit,

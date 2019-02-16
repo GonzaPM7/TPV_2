@@ -3,6 +3,8 @@
 #include "sdl_includes.h"
 #include <string>
 #include <vector>
+
+#include "Observer.h"
 #include "Resources.h"
 #include "SDLTexturesManager.h"
 #include "SDLAudioManager.h"
@@ -25,6 +27,9 @@ public:
 	int getWindowHeight() const; // returns the window height
 	const ServiceLocator* getServiceLocator() const; // returns a pointer to the resources
 
+	void addObserver(Observer* o);
+	void send(const void* senderObj, const msg::Message& msg);
+
 	// abstract methods to be implemented by subclasses
 	virtual void start() = 0; // start the game
 	virtual void stop() = 0;  // stop the game
@@ -36,7 +41,7 @@ private:
 	void closeResources(); // close the  SDLResources object (frees all memory)
 
 protected:
-	ServiceLocator services_; // (textures, font, music, etc)
+	ServiceLocator services_;
 	SDLFontsManager fonts_;
 	SDLTexturesManager textures_;
 	SDLAudioManager audio_;
@@ -48,6 +53,8 @@ protected:
 	string windowTitle_; // window title
 	int width_; // window width
 	int height_; // window height
+
+	vector<Observer*> observers_;
 
 };
 

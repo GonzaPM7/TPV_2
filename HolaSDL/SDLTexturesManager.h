@@ -14,7 +14,7 @@ public:
 	// supposed to be called before start using the object
 	virtual bool init();
 
-	virtual Texture* getTexture(int tag);
+	Texture* getTexture(int tag);
 	bool loadFromImg(int tag, SDL_Renderer* renderer, string fileName);
 	bool loadFromText(int tag, SDL_Renderer* renderer, string text, Font& font, SDL_Color color);
 private:

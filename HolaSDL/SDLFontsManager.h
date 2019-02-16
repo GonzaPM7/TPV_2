@@ -14,8 +14,7 @@ public:
 	// supposed to be called before start using the object
 	virtual bool init();
 
-//	virtual Font* getFont(int tag);
-	virtual Font& operator[](int tag);
+	virtual Font* getFont(int tag);
 	virtual bool loadFont(int tag, string fileName, int size);
 private:
 	map<int,Font*> fonts_;

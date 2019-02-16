@@ -28,6 +28,10 @@ bool SDLFontsManager::init() {
 	return true;
 }
 
+Font* SDLFontsManager::getFont(int tag) {
+	return fonts_[tag];
+}
+
 bool SDLFontsManager::loadFont(int tag, string fileName, int size) {
 	if (!initialized_)
 		return false;
@@ -43,8 +47,4 @@ bool SDLFontsManager::loadFont(int tag, string fileName, int size) {
 		delete font;
 		return false;
 	}
-}
-
-Font& SDLFontsManager::operator [](int tag) {
-	return *fonts_[tag];
 }

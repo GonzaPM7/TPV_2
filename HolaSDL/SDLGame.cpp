@@ -1,6 +1,7 @@
 #include "SDLGame.h"
 #include <time.h>
 #include <iostream>
+#include "Messages_defs.h"
 
 SDLGame::SDLGame(string windowTitle, int width, int height) :
 		windowTitle_(windowTitle), width_(width), height_(height) {
@@ -67,7 +68,7 @@ void SDLGame::initResources() {
 
 	for (auto &txtmsg : Resources::messages_) {
 		textures_.loadFromText(txtmsg.id, renderer_, txtmsg.msg,
-				fonts_[txtmsg.fontId], txtmsg.color);
+				*fonts_.getFont(txtmsg.fontId), txtmsg.color);
 	}
 
 	for (auto &sound : Resources::sounds_) {
@@ -75,7 +76,8 @@ void SDLGame::initResources() {
 	}
 
 	for (auto &music : Resources::musics_) {
-		audio_.loadSound(music.id, music.fileName);
+		cout << music.id << music.fileName << endl;
+		audio_.loadMusic(music.id, music.fileName);
 	}
 
 }
@@ -103,3 +105,17 @@ int SDLGame::getWindowHeight() const {
 	return height_;
 }
 
+void SDLGame::addObserver(Observer* o) {
+	observers_.push_back(o);
+}
+
+void SDLGame::send(const void* senderObj, const msg::Message& msg) {
+	for (Observer* o : observers_) {
+		if (senderObj != o) {
+			if (msg.destination_ == msg::Broadcast // we send to everyone, even to the one from whom we received the message!
+			|| msg.destination_ == o->getId()) {
+				o->receive(senderObj,msg);
+			}
+		}
+	}
+}
