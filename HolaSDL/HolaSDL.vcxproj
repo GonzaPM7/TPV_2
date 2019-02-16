@@ -21,11 +21,13 @@
     <ClInclude Include="DemoContainer.h" />
     <ClInclude Include="DemoGC.h" />
     <ClInclude Include="DemoIC.h" />
+    <ClInclude Include="Fighter.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="FontsManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectPool.h" />
     <ClInclude Include="GraphicsComponent.h" />
+    <ClInclude Include="GunIC.h" />
     <ClInclude Include="ImageGC.h" />
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="Messages_decl.h" />
@@ -34,17 +36,21 @@
     <ClInclude Include="Observer.h" />
     <ClInclude Include="PhysicsComponent.h" />
     <ClInclude Include="RandomNumberGenerator.h" />
+    <ClInclude Include="ReduceSpeedPC.h" />
     <ClInclude Include="Resources.h" />
+    <ClInclude Include="RotationIC.h" />
     <ClInclude Include="SDLAudioManager.h" />
     <ClInclude Include="SDLFontsManager.h" />
     <ClInclude Include="SDLGame.h" />
     <ClInclude Include="SDLTexturesManager.h" />
     <ClInclude Include="sdl_includes.h" />
     <ClInclude Include="ServiceLocator.h" />
+    <ClInclude Include="ShowUpAtOpposideSidePC.h" />
     <ClInclude Include="SRandBasedGenerator.h" />
     <ClInclude Include="StopOnBordersPC.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TexturesManager.h" />
+    <ClInclude Include="ThrustIC.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
@@ -58,11 +64,13 @@
     <ClCompile Include="DemoContainer.cpp" />
     <ClCompile Include="DemoGC.cpp" />
     <ClCompile Include="DemoIC.cpp" />
+    <ClCompile Include="Fighter.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FontsManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectPool.cpp" />
     <ClCompile Include="GraphicsComponent.cpp" />
+    <ClCompile Include="GunIC.cpp" />
     <ClCompile Include="ImageGC.cpp" />
     <ClCompile Include="InputComponent.cpp" />
     <ClCompile Include="main.cpp" />
@@ -70,16 +78,20 @@
     <ClCompile Include="Observer.cpp" />
     <ClCompile Include="PhysicsComponent.cpp" />
     <ClCompile Include="RandomNumberGenerator.cpp" />
+    <ClCompile Include="ReduceSpeedPC.cpp" />
     <ClCompile Include="Resources.cpp" />
+    <ClCompile Include="RotationIC.cpp" />
     <ClCompile Include="SDLAudioManager.cpp" />
     <ClCompile Include="SDLFontsManager.cpp" />
     <ClCompile Include="SDLGame.cpp" />
     <ClCompile Include="SDLTexturesManager.cpp" />
     <ClCompile Include="ServiceLocator.cpp" />
+    <ClCompile Include="ShowUpAtOpposideSidePC.cpp" />
     <ClCompile Include="SRandBasedGenerator.cpp" />
     <ClCompile Include="StopOnBordersPC.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TexturesManager.cpp" />
+    <ClCompile Include="ThrustIC.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
