@@ -340,3 +340,6 @@ ASALocalRun/
 !SDL2-2.0.7/lib/x64/
 !SDL2_image-2.0.1/lib/x64/
 !SDL2-2.0.7/lib/x86/
+bin/HolaSDLDebug.exe
+bin/HolaSDLDebug.exp
+bin/HolaSDLDebug.lib
