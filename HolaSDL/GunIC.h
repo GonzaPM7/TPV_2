@@ -7,9 +7,9 @@
 class GunIC
 {
 private:
-	SDL_Event shootKey_;
+	SDL_Keycode shootKey_;
 public:
-	GunIC(SDL_Event shootKey);
+	GunIC(SDL_Keycode shootKey);
 	~GunIC();
 	virtual void handleInput(Container* c, Uint32 time, const SDL_Event& event);
 

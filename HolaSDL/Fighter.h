@@ -12,8 +12,11 @@
 class Fighter: public Container
 {
 public:
-	Fighter(SDLGame* game);
+	Fighter(SDLGame* game, Vector2D position, double width, double height);
 	virtual ~Fighter();
+	virtual void handleInput(Uint32 time, const SDL_Event& event);
+	virtual void update(Uint32 time);
+	virtual void render(Uint32 time);
 private:
 	// components
 	ImageGC fighterImage_;

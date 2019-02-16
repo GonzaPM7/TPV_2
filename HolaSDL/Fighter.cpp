@@ -4,28 +4,36 @@
 
 
 
-Fighter::Fighter(SDLGame * game): Container(game)
+Fighter::Fighter(SDLGame * game, Vector2D position, double width, double height): Container(game),
+	fighterImage_(getGame()->getServiceLocator()->getTextures()->getTexture(Resources::Airplanes), {47, 90, 207, 25}),
+	naturalMove_(), rotation_(SDLK_LEFT, SDLK_RIGHT, 5), oppositeSide_(), thrust_(SDLK_UP, 0.5, 2.0), reduceSpeed_(0.995), normalGun_(SDLK_SPACE)
 {
-	setWidth(75);
-	setHeight(75);
-	setPosition(Vector2D(game->getWindowWidth() / 2, game->getWindowHeight() / 2));
-	fighterImage_ = ImageGC(getGame()->getServiceLocator()->getTextures()->getTexture(Resources::Airplanes), {47, 90, 207, 25});
-	naturalMove_ = NaturalMovePC();
-	oppositeSide_ = ShowUpAtOpposideSidePC();
-	SDL_Event left;
-	left.key.keysym.sym = SDLK_LEFT;
-	SDL_Event right;
-	right.key.keysym.sym = SDLK_LEFT;
-	rotation_ = RotationIC(left, right, 5);
-	SDL_Event thrust;
-	thrust.key.keysym.sym = SDLK_UP;
-	thrust_ = ThrustIC(thrust, 0.5, 2.0);
-	reduceSpeed_ = ReduceSpeedPC(0.995);
-	SDL_Event shoot;
-	shoot.key.keysym.sym = SDLK_SPACE;
-	normalGun_ = GunIC(shoot);
+	setWidth(width);
+	setHeight(height);
+	setPosition(position);
 }
 
 Fighter::~Fighter()
 {
+}
+
+void Fighter::handleInput(Uint32 time, const SDL_Event & event)
+{
+	if (event.type == SDL_KEYDOWN) {
+		rotation_.handleInput(this, 1, event);
+		thrust_.handleInput(this, 1, event);
+		normalGun_.handleInput(this, 1, event);
+	}
+}
+
+void Fighter::update(Uint32 time)
+{
+	naturalMove_.update(this, 1);
+	oppositeSide_.update(this, 1);
+	reduceSpeed_.update(this, 1);
+}
+
+void Fighter::render(Uint32 time)
+{
+	fighterImage_.render(this, 1);
 }
