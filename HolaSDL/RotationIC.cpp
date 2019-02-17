@@ -1,7 +1,5 @@
 #include "RotationIC.h"
 
-
-
 RotationIC::RotationIC(SDL_Keycode left, SDL_Keycode right, int angle)
 {
 	angle_ = angle;

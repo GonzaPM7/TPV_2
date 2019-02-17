@@ -4,13 +4,13 @@
 
 
 
-Fighter::Fighter(SDLGame * game, Vector2D position, double width, double height): Container(game),
+Fighter::Fighter(SDLGame * game): Container(game),
 	fighterImage_(getGame()->getServiceLocator()->getTextures()->getTexture(Resources::Airplanes), {47, 90, 207, 25}),
 	naturalMove_(), rotation_(SDLK_LEFT, SDLK_RIGHT, 5), oppositeSide_(), thrust_(SDLK_UP, 0.5, 2.0), reduceSpeed_(0.995), normalGun_(SDLK_SPACE)
 {
-	setWidth(width);
-	setHeight(height);
-	setPosition(position);
+	setWidth(75);
+	setHeight(75);
+	setPosition(Vector2D(game->getWindowWidth() / 2, game->getWindowHeight() / 2));
 }
 
 Fighter::~Fighter()

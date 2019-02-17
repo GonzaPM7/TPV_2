@@ -3,8 +3,9 @@
 #include "Component.h"
 #include "Container.h"
 #include "sdl_includes.h"
+#include "InputComponent.h"
 
-class ThrustIC
+class ThrustIC: public InputComponent
 {
 private:
 	SDL_Keycode thrustKey_;

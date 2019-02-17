@@ -16,8 +16,10 @@ private:
 	RotatingPC rotating_;
 	ShowUpAtOpposideSidePC showUpAtOpposideSide_;
 public:
-	Asteroids(SDLGame* game, Vector2D position, double width, double height);
+	Asteroids(SDLGame* game);
 	~Asteroids();
 	void assignComponentsToAsteroids(SDLGame* game);
+	virtual void update(Uint32 time);
+	virtual void render(Uint32 time);
 };
 

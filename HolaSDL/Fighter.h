@@ -21,7 +21,7 @@ private:
 	ReduceSpeedPC reduceSpeed_;
 	GunIC normalGun_;
 public:
-	Fighter(SDLGame* game, Vector2D position, double width, double height);
+	Fighter(SDLGame* game);
 	virtual ~Fighter();
 	virtual void handleInput(Uint32 time, const SDL_Event& event);
 	virtual void update(Uint32 time);

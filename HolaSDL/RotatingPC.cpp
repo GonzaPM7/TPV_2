@@ -2,6 +2,10 @@
 
 
 
+RotatingPC::RotatingPC()
+{
+}
+
 RotatingPC::RotatingPC(int angle)
 {
 	angle_ = angle;

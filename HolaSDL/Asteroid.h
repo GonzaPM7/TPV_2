@@ -16,9 +16,13 @@ private:
 	RotatingPC rotating_;
 	ShowUpAtOpposideSidePC showUpAtOpposideSide_;
 public:
-	Asteroid(SDLGame* game, ImageGC asteroidImage, NaturalMovePC naturalMove, RotatingPC rotating, ShowUpAtOpposideSidePC showUpAtOpposideSide);
+	Asteroid();
 	~Asteroid();
 	int getGenerations();
 	void setGenerations(int generations);
+	void setComponents(ImageGC asteroidImage, NaturalMovePC naturalMove, RotatingPC rotating, ShowUpAtOpposideSidePC showUpAtOpposideSide);
+	void setParameters(Vector2D position, Vector2D velocity, double width, double height);
+	virtual void update(Uint32 time);
+	virtual void render(Uint32 time);
 };
 
