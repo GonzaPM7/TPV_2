@@ -8,8 +8,12 @@ Asteroids::Asteroids(SDLGame* game) :
 {
 	setWidth(20);
 	setHeight(20);
-	setVelocity(Vector2D{ 2.0, 2.0 });
-	setPosition(Vector2D( 45.0, 45.0));
+	double velX = game->getServiceLocator()->getRandomGenerator()->nextInt(1, 5);
+	double velY = game->getServiceLocator()->getRandomGenerator()->nextInt(1, 5);
+	setVelocity(Vector2D{ velX, velY });
+	double posX = game->getServiceLocator()->getRandomGenerator()->nextInt(0, game->getWindowWidth());
+	double posY = game->getServiceLocator()->getRandomGenerator()->nextInt(0, game->getWindowHeight());
+	setPosition(Vector2D(posX, posY));
 	assignComponentsToAsteroids(game);
 
 	Asteroid *a = getUnusedObject();
