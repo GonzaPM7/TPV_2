@@ -2,7 +2,7 @@
 
 #include "PhysicsComponent.h"
 
-class ShowUpAtOpposideSidePC
+class ShowUpAtOpposideSidePC: public PhysicsComponent
 {
 public:
 	ShowUpAtOpposideSidePC();

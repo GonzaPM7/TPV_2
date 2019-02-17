@@ -4,7 +4,7 @@
 #include "Container.h"
 #include "sdl_includes.h"
 
-class GunIC
+class GunIC: public InputComponent
 {
 private:
 	SDL_Keycode shootKey_;

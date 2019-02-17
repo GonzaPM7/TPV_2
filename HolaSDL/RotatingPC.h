@@ -2,13 +2,13 @@
 
 #include "PhysicsComponent.h"
 
-class ReduceSpeedPC: public PhysicsComponent
+class RotatingPC: public PhysicsComponent
 {
 private:
-	double factor_;
+	int angle_;
 public:
-	ReduceSpeedPC(double factor);
-	~ReduceSpeedPC();
+	RotatingPC(int angle);
+	~RotatingPC();
 	virtual void update(Container* c, Uint32 time);
 
 };

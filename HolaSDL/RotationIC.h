@@ -4,7 +4,7 @@
 #include "Container.h"
 #include "sdl_includes.h"
 
-class RotationIC
+class RotationIC: public InputComponent
 {
 private:
 	int angle_;
