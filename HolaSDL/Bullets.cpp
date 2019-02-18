@@ -27,11 +27,10 @@ void Bullets::assignComponentsToBullets(SDLGame * game)
 
 void Bullets::spawnExampleBullet()
 {
-	setVelocity(Vector2D{0, -5});
-	setPosition(Vector2D{ 800, 600 });
-	//assignComponentsToBullets(game);
 	Bullet *b = getUnusedObject();
 	b->setActive(true);
+	b->setVelocity(Vector2D{ 0, -5 });
+	b->setPosition(Vector2D{ 400, 300 });
 }
 
 void Bullets::handleInput(Uint32 time, const SDL_Event & event)
