@@ -2,10 +2,6 @@
 
 #include "GameObjectPool.h"
 #include "Asteroid.h"
-#include "ImageGC.h"
-#include "NaturalMovePC.h"
-#include "RotatingPC.h"
-#include "ShowUpAtOpposideSidePC.h"
 #include <vector>
 
 class Asteroids: public GameObjectPool<Asteroid, 50>

@@ -17,9 +17,13 @@
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="BounceOnBorderPC.h" />
     <ClInclude Include="BoundingBoxGC.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Bullets.h" />
+    <ClInclude Include="BulletShooterIC.h" />
     <ClInclude Include="Collisions.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Container.h" />
+    <ClInclude Include="DeactivateOnBorderExit.h" />
     <ClInclude Include="DemoContainer.h" />
     <ClInclude Include="DemoGC.h" />
     <ClInclude Include="DemoIC.h" />
@@ -63,9 +67,13 @@
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="BounceOnBorderPC.cpp" />
     <ClCompile Include="BoundingBoxGC.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Bullets.cpp" />
+    <ClCompile Include="BulletShooterIC.cpp" />
     <ClCompile Include="Collisions.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Container.cpp" />
+    <ClCompile Include="DeactivateOnBorderExit.cpp" />
     <ClCompile Include="DemoContainer.cpp" />
     <ClCompile Include="DemoGC.cpp" />
     <ClCompile Include="DemoIC.cpp" />
