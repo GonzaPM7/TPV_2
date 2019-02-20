@@ -30,12 +30,15 @@
     <ClInclude Include="Fighter.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="FontsManager.h" />
+    <ClInclude Include="GameCtrlIC.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectPool.h" />
     <ClInclude Include="GraphicsComponent.h" />
     <ClInclude Include="GunIC.h" />
     <ClInclude Include="ImageGC.h" />
     <ClInclude Include="InputComponent.h" />
+    <ClInclude Include="LivesViewer.h" />
     <ClInclude Include="Messages_decl.h" />
     <ClInclude Include="Messages_defs.h" />
     <ClInclude Include="NaturalMovePC.h" />
@@ -46,6 +49,7 @@
     <ClInclude Include="Resources.h" />
     <ClInclude Include="RotatingPC.h" />
     <ClInclude Include="RotationIC.h" />
+    <ClInclude Include="ScoreViewerGC.h" />
     <ClInclude Include="SDLAudioManager.h" />
     <ClInclude Include="SDLFontsManager.h" />
     <ClInclude Include="SDLGame.h" />
@@ -80,12 +84,15 @@
     <ClCompile Include="Fighter.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FontsManager.cpp" />
+    <ClCompile Include="GameCtrlIC.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectPool.cpp" />
     <ClCompile Include="GraphicsComponent.cpp" />
     <ClCompile Include="GunIC.cpp" />
     <ClCompile Include="ImageGC.cpp" />
     <ClCompile Include="InputComponent.cpp" />
+    <ClCompile Include="LivesViewer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NaturalMovePC.cpp" />
     <ClCompile Include="Observer.cpp" />
@@ -95,6 +102,7 @@
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="RotatingPC.cpp" />
     <ClCompile Include="RotationIC.cpp" />
+    <ClCompile Include="ScoreViewerGC.cpp" />
     <ClCompile Include="SDLAudioManager.cpp" />
     <ClCompile Include="SDLFontsManager.cpp" />
     <ClCompile Include="SDLGame.cpp" />

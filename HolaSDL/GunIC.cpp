@@ -20,7 +20,7 @@ void GunIC::handleInput(Container * c, Uint32 time, const SDL_Event & event)
 			Vector2D bulletDirection = Vector2D(0, -1).rotate(c->getRotation());
 			int bulletType = 0;
 			// enviar mensaje
-			msg::Shoot shoot(msg::Fighter, msg::BulletsShooter, bulletPosition, bulletDirection, bulletType);
+			msg::Shoot shoot(msg::None, msg::Broadcast, bulletPosition, bulletDirection, bulletType);
 			cout << "shooting";
 		}
 	}

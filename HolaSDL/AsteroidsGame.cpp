@@ -8,7 +8,8 @@ AsteroidsGame::AsteroidsGame() :
 	demoContainer_(this),
 	fighter_(this),
 	asteroids_(this),
-	bullets_(this)
+	bullets_(this),
+	gameManager_(this)
 {
 	initGame();
 }
@@ -22,6 +23,7 @@ void AsteroidsGame::initGame() {
 	actors_.push_back(&fighter_);
 	actors_.push_back(&asteroids_);
 	actors_.push_back(&bullets_);
+	actors_.push_back(&gameManager_);
 }
 
 void AsteroidsGame::closeGame() {
