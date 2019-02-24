@@ -27,5 +27,5 @@ void GameManager::render(Uint32 time)
 {
 	scoreView_.render(this, 1);
 	livesViewer_.render(this, 1);
-	// gameStatusView_.render(this, 1);
+	gameStatusView_.render(this, 1);
 }
