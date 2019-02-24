@@ -4,6 +4,9 @@
 #include "GameCtrlIC.h"
 #include "ScoreViewerGC.h"
 #include "LivesViewer.h"
+#include "GameStatusViewGC.h"
+#include "FighterAsteroidCollision.h"
+#include "BulletsAsteroidsCollision.h"
 
 class GameManager: public Container
 {
@@ -18,10 +21,10 @@ private:
 	// components of GameManager
 	GameCtrlIC gameCtrl_;
 	ScoreViewerGC scoreView_;
-	//GameStatusViewGC gameStatusView_;
+	GameStatusViewGC gameStatusView_;
 	LivesViewer livesViewer_;
-	//FighterAsteroidCollision fighterAsteroidCollision_;
-	//BulletsAsteroidsCollision bulletsAsteroidsCollision_; 
+	FighterAsteroidCollision fighterAsteroidCollision_;
+	BulletsAsteroidsCollision bulletsAsteroidsCollision_; 
 
 public:
 	GameManager(SDLGame* game);

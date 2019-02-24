@@ -34,6 +34,7 @@
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectPool.h" />
+    <ClInclude Include="GameStatusViewGC.h" />
     <ClInclude Include="GraphicsComponent.h" />
     <ClInclude Include="GunIC.h" />
     <ClInclude Include="ImageGC.h" />
@@ -88,6 +89,7 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectPool.cpp" />
+    <ClCompile Include="GameStatusViewGC.cpp" />
     <ClCompile Include="GraphicsComponent.cpp" />
     <ClCompile Include="GunIC.cpp" />
     <ClCompile Include="ImageGC.cpp" />
