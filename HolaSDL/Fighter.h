@@ -8,6 +8,7 @@
 #include "ThrustIC.h"
 #include "ReduceSpeedPC.h"
 #include "GunIC.h"
+#include "Messages_defs.h"
 
 class Fighter: public Container
 {
@@ -23,8 +24,7 @@ private:
 public:
 	Fighter(SDLGame* game);
 	virtual ~Fighter();
-	virtual void handleInput(Uint32 time, const SDL_Event& event);
-	virtual void update(Uint32 time);
-	virtual void render(Uint32 time);
+
+	virtual void receive(const void* senderObj, const msg::Message& msg);
 };
 

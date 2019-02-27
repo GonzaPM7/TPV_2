@@ -7,6 +7,8 @@
 #include "GameStatusViewGC.h"
 #include "FighterAsteroidCollision.h"
 #include "BulletsAsteroidsCollision.h"
+#include "Messages_defs.h"
+
 
 class GameManager: public Container
 {
@@ -39,5 +41,6 @@ public:
 	virtual void update(Uint32 time);
 	virtual void render(Uint32 time);
 
+	virtual void receive(const void* senderObj, const msg::Message& msg);
 };
 

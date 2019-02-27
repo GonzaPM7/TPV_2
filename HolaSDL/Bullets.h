@@ -15,10 +15,6 @@ private:
 public:
 	Bullets(SDLGame* game);
 	virtual ~Bullets();
-	void assignComponentsToBullets(SDLGame* game);
-	void spawnExampleBullet();
-	virtual void handleInput(Uint32 time, const SDL_Event& event);
-	virtual void update(Uint32 time);
-	virtual void render(Uint32 time);
+	void spawnBullet();
 };
 

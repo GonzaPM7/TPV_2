@@ -2,8 +2,10 @@
 
 
 
-Bullet::Bullet(): bulletImage_(), deactivate_(), naturalMove_()
+Bullet::Bullet()
 {
+	setId(msg::Bullet);
+
 	power_ = 10;
 }
 
@@ -22,28 +24,12 @@ void Bullet::setPower(int power)
 	power_ = power;
 }
 
-void Bullet::setComponents(ImageGC bulletImage, NaturalMovePC naturalMove, DeactivateOnBorderExit deactivate)
+void Bullet::receive(const void * senderObj, const msg::Message & msg)
 {
-	bulletImage_ = bulletImage;
-	naturalMove_ = naturalMove;
-	deactivate_ = deactivate;
-}
+	Container::receive(senderObj, msg);
 
-void Bullet::setParameters(Vector2D position, Vector2D velocity, double width, double height)
-{
-	setPosition(position);
-	setVelocity(velocity);
-	setWidth(width);
-	setHeight(height);
-}
+	switch (msg.type_)
+	{
+	}
 
-void Bullet::update(Uint32 time)
-{
-	naturalMove_.update(this, 1);
-	deactivate_.update(this, 1);
-}
-
-void Bullet::render(Uint32 time)
-{
-	bulletImage_.render(this, 1);
 }

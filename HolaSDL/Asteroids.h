@@ -14,8 +14,6 @@ private:
 public:
 	Asteroids(SDLGame* game);
 	~Asteroids();
-	void assignComponentsToAsteroids(SDLGame* game);
-	virtual void update(Uint32 time);
-	virtual void render(Uint32 time);
+	void createAsteroid();
 };
 

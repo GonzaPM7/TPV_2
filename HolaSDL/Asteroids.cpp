@@ -14,10 +14,18 @@ Asteroids::Asteroids(SDLGame* game) :
 	double posX = game->getServiceLocator()->getRandomGenerator()->nextInt(0, game->getWindowWidth());
 	double posY = game->getServiceLocator()->getRandomGenerator()->nextInt(0, game->getWindowHeight());
 	setPosition(Vector2D(posX, posY));
-	assignComponentsToAsteroids(game);
 
-	Asteroid *a = getUnusedObject();
-	a->setActive(true);
+	for (Asteroid* b : getAllObjects())
+	{
+		addC(&naturalMove_);
+		addC(&asteroidImage_);
+		addC(&rotating_);
+		addC(&showUpAtOpposideSide_);
+	}
+
+	createAsteroid();
+
+	setActive(false);
 }
 
 
@@ -25,39 +33,15 @@ Asteroids::~Asteroids()
 {
 }
 
-void Asteroids::assignComponentsToAsteroids(SDLGame* game)
-{
-	vector<Asteroid*> asteroids = getAllObjects();
 
-	for (int i = 0; i < asteroids.size(); i++)
-	{
-		asteroids[i]->setComponents(asteroidImage_, naturalMove_, rotating_, showUpAtOpposideSide_);
-		asteroids[i]->setParameters(getPosition(), getVelocity(), getWidth(), getHeight());
-	}
+void Asteroids::createAsteroid()
+{
+	Asteroid *a = getUnusedObject();
+	a->setPosition(getPosition());
+	a->setVelocity(getVelocity());
+	a->setWidth(getWidth());
+	a->setHeight(getHeight());
+	a->setActive(true);
 }
 
-void Asteroids::update(Uint32 time)
-{
-	vector<Asteroid*> asteroids = getAllObjects();
 
-	for (int i = 0; i < asteroids.size(); i++)
-	{
-		if (asteroids[i]->isActive())
-		{
-			asteroids[i]->update(time);
-		}
-	}
-}
-
-void Asteroids::render(Uint32 time)
-{
-	vector<Asteroid*> asteroids = getAllObjects();
-
-	for (int i = 0; i < asteroids.size(); i++)
-	{
-		if (asteroids[i]->isActive())
-		{
-			asteroids[i]->render(time);
-		}
-	}
-}
