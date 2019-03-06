@@ -19,6 +19,5 @@ public:
 	int getGenerations();
 	void setGenerations(int generations);
 
-	virtual void receive(const void* senderObj, const msg::Message& msg);
 };
 

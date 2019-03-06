@@ -16,5 +16,7 @@ public:
 	Bullets(SDLGame* game);
 	virtual ~Bullets();
 	void spawnBullet();
+
+	virtual void receive(const void* senderObj, const msg::Message& msg);
 };
 

@@ -15,6 +15,7 @@ Bullets::Bullets(SDLGame * game):
 		b->addC(&deactivate_);
 	}
 
+	setId(msg::BulletsID);
 	setActive(false);
 }
 
@@ -31,6 +32,16 @@ void Bullets::spawnBullet()
 	b->setWidth(getWidth());
 	b->setHeight(getHeight());
 	b->setActive(true);*/
+}
+
+void Bullets::receive(const void * senderObj, const msg::Message & msg)
+{
+	Container::receive(senderObj, msg);
+
+	switch (msg.type_)
+	{
+	}
+
 }
 
 

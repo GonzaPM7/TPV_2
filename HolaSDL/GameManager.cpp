@@ -5,7 +5,7 @@ GameManager::GameManager(SDLGame * game): Container(game),
 running_(false), gameOver_(true), score_(0), lives_(maxLives_), winner_(0),
 gameCtrl_(), scoreView_(), livesViewer_(), gameStatusView_(), fighterAsteroidCollision_(), bulletsAsteroidsCollision_()
 {
-	setId(msg::GameManager);
+	setId(msg::GameManagerID);
 }
 
 GameManager::~GameManager()

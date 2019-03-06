@@ -17,6 +17,5 @@ public:
 	int getPower();
 	void setPower(int power);
 
-	virtual void receive(const void* senderObj, const msg::Message& msg);
 };
 
