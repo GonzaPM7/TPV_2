@@ -21,8 +21,8 @@ void GameCtrlIC::handleInput(Container * c, Uint32 time, const SDL_Event & event
 			if (!gm->isRunning())
 			{
 				if(gm->isGameOver())
-					msg::Message gameStart(msg::GAME_START, msg::None, msg::Broadcast);
-				msg::Message roundStart(msg::ROUND_START, msg::None, msg::Broadcast);
+					c->globalSend(this, msg::Message(msg::GAME_START, msg::None, msg::Broadcast));
+				c->globalSend(this, msg::Message(msg::ROUND_START, msg::None, msg::Broadcast));
 			}
 		}
 	}

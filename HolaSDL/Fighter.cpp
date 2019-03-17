@@ -38,7 +38,7 @@ void Fighter::receive(const void * senderObj, const msg::Message & msg)
 	{
 	case msg::GAME_START:
 		// enviar mensaje
-		msg::FighterInfo(msg::Fighter, msg::Broadcast, this);
+		globalSend(this, msg::FighterInfo(msg::Fighter, msg::Broadcast, this));
 		break;
 	case msg::ROUND_START:
 		setPosition(Vector2D(getGame()->getWindowWidth() / 2, getGame()->getWindowHeight() / 2));

@@ -29,7 +29,7 @@ void FighterAsteroidCollision::update(Container * c, Uint32 time)
 				if (fighter_->isActive() && (*it)->isActive() && Collisions::collidesWithRotation(fighter_, (*it)))
 				{
 					// enviar mensaje
-					msg::FighterAsteroidCollisionMsg(msg::None, msg::Broadcast, fighter_, (*it));
+					c->globalSend(this, msg::FighterAsteroidCollisionMsg(msg::None, msg::Broadcast, fighter_, (*it)));
 					collision = true;
 				}
 				it++;

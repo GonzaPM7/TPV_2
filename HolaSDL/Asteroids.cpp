@@ -53,7 +53,7 @@ void Asteroids::receive(const void * senderObj, const msg::Message & msg)
 	{
 	case msg::GAME_START:
 		// enviar mensaje
-		msg::AsteroidsInfo(msg::AsteroidsID, msg::Broadcast, &getAllObjects());
+		globalSend(this, msg::AsteroidsInfo(msg::AsteroidsID, msg::Broadcast, &getAllObjects()));
 		break;
 	case msg::ROUND_START:
 		for (int i = 0; i < 10; i++)
@@ -93,9 +93,11 @@ void Asteroids::receive(const void * senderObj, const msg::Message & msg)
 		}
 		break;
 	case msg::ROUND_OVER:
-
+		deactiveAllObjects();
+		setActive(false);
 		break;
 	case msg::BULLET_ASTEROID_COLLISION:
+		// Bullet* b = static_cast<msg::BulletAsteroidCollision>(msg).bullet_;
 		break;
 
 	}
