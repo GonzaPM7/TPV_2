@@ -36,6 +36,44 @@ void GameManager::receive(const void * senderObj, const msg::Message & msg)
 
 	switch (msg.type_)
 	{
+		case msg::GAME_START:
+			gameOver_ = false;
+			winner_ = 0;
+			lives_ = maxLives_;
+			break;
+		case msg::ROUND_START:
+			running_ = true;
+			getGame()->getServiceLocator()->getAudios()->playMusic(Resources::ImperialMarch, -1);
+			break;
+		case msg::ASTEROID_DESTROYED:
+		{
+			int points = static_cast<const msg::AsteroidDestroyed&>(msg).points_;
+			score_ += points;
+		}
+			break;
+		case msg::NO_MORE_ASTEROIDS:
+			running_ = false;
+			gameOver_ = true;
+			winner_ = 1;
+			getGame()->getServiceLocator()->getAudios()->haltMusic();
+			globalSend(this, msg::Message(msg::ROUND_OVER, msg::GameManagerID, msg::Broadcast));
+			globalSend(this, msg::Message(msg::GAME_OVER, msg::GameManagerID, msg::Broadcast));
+			break;
+		case msg::FIGHTER_ASTEROID_COLLISION:
+			getGame()->getServiceLocator()->getAudios()->playChannel(Resources::Explosion, 0, -1);
+			getGame()->getServiceLocator()->getAudios()->haltMusic();
+			running_ = false;
+			lives_--;
+			globalSend(this, msg::Message(msg::ROUND_OVER, msg::GameManagerID, msg::Broadcast));
+
+			if (lives_ == 0)
+			{
+				gameOver_ = true;
+				winner_ = 2;
+				globalSend(this, msg::Message(msg::GAME_OVER, msg::GameManagerID, msg::Broadcast));
+			}
+			break;
+
 	}
 
 }

@@ -46,9 +46,15 @@ void BulletsAsteroidsCollision::update(Container * c, Uint32 time)
 
 void BulletsAsteroidsCollision::receive(Container * c, const msg::Message & msg)
 {
-
-
 	switch (msg.type_)
 	{
+	case msg::ASTEROIDS_INFO:
+	{
+		asteroids_ = static_cast<const msg::AsteroidsInfo&>(msg).asteroids_;
+	}
+		break;
+	case msg::BULLETS_INFO:
+		bullets_ = static_cast<const msg::BulletsInfoMsg&>(msg).bullets_;
+		break;
 	}
 }

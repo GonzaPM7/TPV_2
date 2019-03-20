@@ -40,6 +40,37 @@ void Bullets::receive(const void * senderObj, const msg::Message & msg)
 
 	switch (msg.type_)
 	{
+		case msg::GAME_START:
+			globalSend(this, msg::BulletsInfoMsg(msg::BulletsID, msg::Broadcast, &getAllObjects()));
+			break;
+		case msg::ROUND_START:
+			setActive(true);
+			break;
+		case msg::ROUND_OVER:
+			deactiveAllObjects();
+			setActive(false);
+			break;
+		case msg::BULLET_ASTEROID_COLLISION:
+		{
+			Bullet* x = static_cast<const msg::BulletAsteroidCollision&>(msg).bullet_; // bala destruido
+			x->setActive(false);
+		}
+			break;
+		case msg::FIGHTER_SHOOT:
+		{
+			msg::Shoot shoot = static_cast<const msg::Shoot&>(msg);
+
+			Bullet *b = getUnusedObject();
+			b->setWidth(1);
+			b->setHeight(5);
+			b->setPosition(shoot.pos_-Vector2D(b->getWidth()/2, b->getHeight()));
+			b->setVelocity(Vector2D(shoot.dir_ * 5));
+			b->setRotation(Vector2D(0, -1).angle(shoot.dir_));
+			b->setActive(true);
+
+			getGame()->getServiceLocator()->getAudios()->playChannel(Resources::GunShot, 0, -1);
+		}
+			break;
 	}
 
 }
