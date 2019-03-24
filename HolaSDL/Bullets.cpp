@@ -3,7 +3,7 @@
 
 Bullets::Bullets(SDLGame * game):
 	GameObjectPool(game), bulletImage_(getGame()->getServiceLocator()->getTextures()->getTexture(Resources::WhiteRect)),
-	naturalMove_(), deactivate_(), bulletShooter_(SDLK_b)
+	naturalMove_(), deactivate_()
 {
 
 	for (Bullet* b : getAllObjects())
@@ -21,16 +21,6 @@ Bullets::~Bullets()
 {
 }
 
-
-void Bullets::spawnBullet()
-{
-	/*Bullet *b = getUnusedObject();
-	b->setPosition(position);
-	b->setVelocity(velocity);
-	b->setWidth(getWidth());
-	b->setHeight(getHeight());
-	b->setActive(true);*/
-}
 
 void Bullets::receive(const void * senderObj, const msg::Message & msg)
 {

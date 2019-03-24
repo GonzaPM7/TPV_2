@@ -32,7 +32,7 @@ void BulletsAsteroidsCollision::update(Container * c, Uint32 time)
 					if ((*bulletIt)->isActive() && (*asteroidIt)->isActive() && Collisions::collidesWithRotation((*bulletIt), (*asteroidIt)))
 					{
 						// enviar mensaje
-						c->globalSend(this, msg::BulletAsteroidCollision(msg::None, msg::Broadcast, (*bulletIt), (*asteroidIt)));
+  						c->globalSend(this, msg::BulletAsteroidCollision(msg::None, msg::Broadcast, (*bulletIt), (*asteroidIt)));
 						collision = true;
 					}
 					bulletIt++;
