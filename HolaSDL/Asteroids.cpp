@@ -25,7 +25,7 @@ Asteroids::Asteroids(SDLGame* game) :
 
 	createAsteroid();
 
-	setId(msg::AsteroidsID);
+	setId(msg::Asteroids);
 	setActive(true);
 }
 
@@ -53,9 +53,10 @@ void Asteroids::receive(const void * senderObj, const msg::Message & msg)
 	{
 	case msg::GAME_START:
 		// enviar mensaje
-		globalSend(this, msg::AsteroidsInfo(msg::AsteroidsID, msg::Broadcast, &getAllObjects()));
+		globalSend(this, msg::AsteroidsInfo(msg::Asteroids, msg::Broadcast, &getAllObjects()));
 		break;
 	case msg::ROUND_START:
+		setActive(true);
 		for (int i = 0; i < 10; i++)
 		{
 			// 0 = left side, 1 = top side, 2 = right side, 3 = bottom side
@@ -103,7 +104,7 @@ void Asteroids::receive(const void * senderObj, const msg::Message & msg)
 		Asteroid* x = static_cast<const msg::BulletAsteroidCollision&>(msg).asteroid_; // asteroide destruido
 		x->setActive(false); 
 
-		globalSend(this, msg::AsteroidDestroyed(msg::AsteroidsID, msg::Broadcast, 4 - x->getGenerations()));
+		globalSend(this, msg::AsteroidDestroyed(msg::Asteroids, msg::Broadcast, 4 - x->getGenerations()));
 
 		if (x->getGenerations() > 1)
 		{
@@ -127,7 +128,7 @@ void Asteroids::receive(const void * senderObj, const msg::Message & msg)
 				remainingAsteroids++;
 		}
 		if(remainingAsteroids == 0)
-			globalSend(this, msg::Message(msg::NO_MORE_ASTEROIDS, msg::AsteroidsID, msg::Broadcast));
+			globalSend(this, msg::Message(msg::NO_MORE_ASTEROIDS, msg::Asteroids, msg::Broadcast));
 
 		getGame()->getServiceLocator()->getAudios()->playChannel(Resources::Explosion, 0, -1);
 

@@ -11,8 +11,7 @@ enum ObjectId {
 	BulletsShooter,
 	FighterGun,
 
-	// 3 extra
-	AsteroidsID,
+	// 2 extra
 	BulletsID,
 	GameManagerID,
 };
