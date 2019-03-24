@@ -5,8 +5,6 @@ Bullets::Bullets(SDLGame * game):
 	GameObjectPool(game), bulletImage_(getGame()->getServiceLocator()->getTextures()->getTexture(Resources::WhiteRect)),
 	naturalMove_(), deactivate_(), bulletShooter_(SDLK_b)
 {
-	setWidth(20);
-	setHeight(15);
 
 	for (Bullet* b : getAllObjects())
 	{
