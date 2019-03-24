@@ -3,7 +3,6 @@
 
 Asteroid::Asteroid()
 {
-
 	generations_ = 3;
 }
 

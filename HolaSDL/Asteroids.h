@@ -14,7 +14,6 @@ private:
 public:
 	Asteroids(SDLGame* game);
 	~Asteroids();
-	void createAsteroid();
 
 	virtual void receive(const void* senderObj, const msg::Message& msg);
 };

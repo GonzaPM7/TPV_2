@@ -6,14 +6,6 @@ Asteroids::Asteroids(SDLGame* game) :
 	GameObjectPool(game), asteroidImage_(getGame()->getServiceLocator()->getTextures()->getTexture(Resources::Asteroid)),
 	naturalMove_(), rotating_(5), showUpAtOpposideSide_()
 {
-	setWidth(20);
-	setHeight(20);
-	double velX = game->getServiceLocator()->getRandomGenerator()->nextInt(1, 5);
-	double velY = game->getServiceLocator()->getRandomGenerator()->nextInt(1, 5);
-	setVelocity(Vector2D{ velX, velY });
-	double posX = game->getServiceLocator()->getRandomGenerator()->nextInt(0, game->getWindowWidth());
-	double posY = game->getServiceLocator()->getRandomGenerator()->nextInt(0, game->getWindowHeight());
-	setPosition(Vector2D(posX, posY));
 
 	for (Asteroid* b : getAllObjects())
 	{
@@ -23,8 +15,6 @@ Asteroids::Asteroids(SDLGame* game) :
 		b->addC(&showUpAtOpposideSide_);
 	}
 
-	createAsteroid();
-
 	setId(msg::Asteroids);
 	setActive(true);
 }
@@ -32,17 +22,6 @@ Asteroids::Asteroids(SDLGame* game) :
 
 Asteroids::~Asteroids()
 {
-}
-
-
-void Asteroids::createAsteroid()
-{
-	Asteroid *a = getUnusedObject();
-	a->setPosition(Vector2D(100, 100));
-	a->setVelocity(Vector2D(1.0, 1.0));
-	a->setWidth(10.0);
-	a->setHeight(10.5);
-	a->setActive(true);
 }
 
 void Asteroids::receive(const void * senderObj, const msg::Message & msg)
@@ -89,8 +68,8 @@ void Asteroids::receive(const void * senderObj, const msg::Message & msg)
 			Vector2D v = (c - p).normalize() * (getGame()->getServiceLocator()->getRandomGenerator()->nextInt(1, 10) / 20.0);
 			Asteroid *a = getUnusedObject();
 
-			a->setWidth(10.0);
-			a->setHeight(10.0);
+			a->setWidth(20.0);
+			a->setHeight(20.0);
 			a->setPosition(p);
 			a->setVelocity(v);
 			a->setActive(true);

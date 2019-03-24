@@ -16,29 +16,17 @@ void BulletsAsteroidsCollision::update(Container * c, Uint32 time)
 {
 	GameManager* gm = static_cast<GameManager*>(c);
 
-	bool collision = false;
-
-	if (gm->isRunning())
-	{
-		if (bullets_ != nullptr && asteroids_ != nullptr)
-		{
-			auto asteroidIt = asteroids_->begin();
-			auto bulletIt = bullets_->begin();
-
-			while (asteroidIt != asteroids_->end() && !collision)
-			{
-				while (bulletIt != bullets_->end() && !collision)
-				{
-					if ((*bulletIt)->isActive() && (*asteroidIt)->isActive() && Collisions::collidesWithRotation((*bulletIt), (*asteroidIt)))
+	if (bullets_ != nullptr && asteroids_ != nullptr) {
+		if (gm->isRunning()) {
+			for (int i = 0; i < bullets_->size(); i++) {
+				for (int j = 0; j < asteroids_->size(); j++) {
+					Bullet* bullet = bullets_->at(i);
+					Asteroid* asteroid = asteroids_->at(j);
+					if (bullet->isActive() && asteroid->isActive() && Collisions::collidesWithRotation(bullet, asteroid))
 					{
-						// enviar mensaje
-  						c->globalSend(this, msg::BulletAsteroidCollision(msg::None, msg::Broadcast, (*bulletIt), (*asteroidIt)));
-						collision = true;
+						c->globalSend(this, msg::BulletAsteroidCollision(msg::None, msg::Broadcast, bullet, asteroid));
 					}
-					bulletIt++;
 				}
-				
-				asteroidIt++;
 			}
 		}
 	}
