@@ -14,6 +14,6 @@ private:
 public:
 	ThrustIC(SDL_Keycode thrustKey, double thrust, double speedLimit);
 	~ThrustIC();
-	virtual void handleInput(Container* c, Uint32 time, const SDL_Event& event);
+	virtual void handleInput(Container* c, Uint32 time);
 };
 

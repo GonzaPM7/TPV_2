@@ -11,7 +11,7 @@ class GameObjectPool: public Container {
 public:
 	GameObjectPool(SDLGame* game);
 	virtual ~GameObjectPool();
-	virtual void handleInput(Uint32 time, const SDL_Event& event);
+	virtual void handleInput(Uint32 time);
 	virtual void update(Uint32 time);
 	virtual void render(Uint32 time);
 
@@ -40,14 +40,13 @@ inline GameObjectPool<T, SIZE>::~GameObjectPool() {
 }
 
 template<typename T, int SIZE>
-inline void GameObjectPool<T, SIZE>::handleInput(Uint32 time,
-		const SDL_Event& event) {
-	Container::handleInput(time, event);
+inline void GameObjectPool<T, SIZE>::handleInput(Uint32 time) {
+	Container::handleInput(time);
 	if (!isActive())
 		return;
 	for (auto &o : objs_) {
 		if (o.isActive()) {
-			o.handleInput(time, event);
+			o.handleInput(time);
 		}
 	}
 }

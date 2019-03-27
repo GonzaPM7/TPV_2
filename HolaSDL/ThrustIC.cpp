@@ -12,7 +12,7 @@ ThrustIC::~ThrustIC()
 {
 }
 
-void ThrustIC::handleInput(Container * c, Uint32 time, const SDL_Event & event)
+void ThrustIC::handleInput(Container * c, Uint32 time)
 {
 	if (event.type == SDL_KEYDOWN) {
 		if (event.key.keysym.sym == thrustKey_) {

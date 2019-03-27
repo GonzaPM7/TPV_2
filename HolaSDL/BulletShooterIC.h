@@ -11,7 +11,7 @@ private:
 public:
 	BulletShooterIC(SDL_Keycode shootKey);
 	~BulletShooterIC();
-	virtual void handleInput(Container* c, Uint32 time, const SDL_Event& event) {};
+	virtual void handleInput(Container* c, Uint32 time) {};
 	virtual bool handleInputEvent(Container* c, Uint32 time, const SDL_Event& event);
 };
 
