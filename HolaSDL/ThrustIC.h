@@ -9,6 +9,7 @@ class ThrustIC: public InputComponent
 {
 private:
 	SDL_Keycode thrustKey_;
+
 	double thrust_;
 	double speedLimit_;
 public:
