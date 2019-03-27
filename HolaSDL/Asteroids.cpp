@@ -72,6 +72,7 @@ void Asteroids::receive(const void * senderObj, const msg::Message & msg)
 			a->setHeight(20.0);
 			a->setPosition(p);
 			a->setVelocity(v);
+			a->setGenerations(3);
 			a->setActive(true);
 		}
 		break;

@@ -32,12 +32,15 @@ void GameStatusViewGC::render(Container * c, Uint32 time)
 			break;
 		}
 
-		Texture winner(c->getGame()->getRenderer(),
-			"Game Over: " + winnerText + " wins.",
-			*(c->getGame()->getServiceLocator()->getFonts()->getFont(
-				Resources::ARIAL24)), { COLOR(0x0022ffff) });
-		winner.render(c->getGame()->getRenderer(),
-			c->getGame()->getWindowWidth() / 2 - winner.getWidth() / 2, c->getGame()->getWindowHeight() / 2 - 25);
+		if (gm->getWinner() != 0)
+		{
+			Texture winner(c->getGame()->getRenderer(),
+				"Game Over: " + winnerText + " wins.",
+				*(c->getGame()->getServiceLocator()->getFonts()->getFont(
+					Resources::ARIAL24)), { COLOR(0x0022ffff) });
+			winner.render(c->getGame()->getRenderer(),
+				c->getGame()->getWindowWidth() / 2 - winner.getWidth() / 2, c->getGame()->getWindowHeight() / 2 - 25);
+		}
 
 		string instructionMessage;
 		string roundMessage = "Press ENTER to Continue";
