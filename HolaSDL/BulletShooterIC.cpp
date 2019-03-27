@@ -1,5 +1,5 @@
 #include "BulletShooterIC.h"
-
+#include "InputHandler.h"
 
 
 BulletShooterIC::BulletShooterIC(SDL_Keycode shootKey)
@@ -14,8 +14,8 @@ BulletShooterIC::~BulletShooterIC()
 
 bool BulletShooterIC::handleInputEvent(Container * c, Uint32 time, const SDL_Event & event)
 {
-	if (event.type == SDL_KEYDOWN) {
-		if (event.key.keysym.sym == shootKey_) {
+	if (InputHandler::getInstance()->isAnyKeyDown()) {
+		if (InputHandler::getInstance()->isKeyDown(shootKey_)) {
 			return true;
 		}
 		else return false;
