@@ -82,7 +82,6 @@ void Asteroids::receive(const void * senderObj, const msg::Message & msg)
 		break;
 	case msg::BULLET_ASTEROID_COLLISION:
 		Asteroid* x = static_cast<const msg::BulletAsteroidCollision&>(msg).asteroid_; // asteroide destruido
-		x->setActive(false); 
 
 		globalSend(this, msg::AsteroidDestroyed(msg::Asteroids, msg::Broadcast, 4 - x->getGenerations()));
 
@@ -100,6 +99,7 @@ void Asteroids::receive(const void * senderObj, const msg::Message & msg)
 				a->setActive(true);
 			}
 		}
+		x->setActive(false);
 
 		int remainingAsteroids = 0;
 		for (Asteroid* ast : getAllObjects())
