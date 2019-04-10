@@ -1,5 +1,6 @@
 #include "Asteroids.h"
-
+#include "Logger.h"
+#include <sstream>
 
 
 Asteroids::Asteroids(SDLGame* game) :
@@ -74,6 +75,12 @@ void Asteroids::receive(const void * senderObj, const msg::Message & msg)
 			a->setVelocity(v);
 			a->setGenerations(3);
 			a->setActive(true);
+
+			Logger::instance()->log([p, v]() {
+				stringstream s;
+				s << "New asteroid: " << p << " " << v;
+				return s.str();
+			});
 		}
 		break;
 	case msg::ROUND_OVER:

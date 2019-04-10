@@ -16,7 +16,12 @@ public:
 		return instance_.get();
 	}
 
-	inline static void initInstance(string filename);
+	inline static void initInstance(string filename)
+	{
+		if (instance_.get() == nullptr) {
+			instance_.reset(new Logger(filename));
+		}
+	}
 
 	virtual ~Logger();
 	Logger(Logger&) = delete;
