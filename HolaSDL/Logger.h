@@ -3,6 +3,8 @@
 #include <iostream>
 #include <fstream>
 #include <memory>
+#include <string>
+#include <functional>
 #include "Worker.h"
 
 using namespace std;
@@ -16,6 +18,7 @@ public:
 
 	inline static void initInstance(string filename);
 
+	virtual ~Logger();
 	Logger(Logger&) = delete;
 	Logger& operator=(const Logger&) = delete;
 
@@ -23,7 +26,6 @@ public:
 	void log(function<string()> f);
 private:
 	Logger(string filename);
-	virtual ~Logger();
 	static unique_ptr<Logger> instance_;
 	Worker worker_;
 	ofstream log_;

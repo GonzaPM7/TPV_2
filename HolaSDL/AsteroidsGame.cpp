@@ -1,6 +1,6 @@
 #include "AsteroidsGame.h"
 #include "InputHandler.h"
-
+#include "Logger.h"
 
 using namespace std;
 
@@ -28,6 +28,8 @@ void AsteroidsGame::initGame() {
 	addObserver(&asteroids_);
 	addObserver(&bullets_);
 	addObserver(&gameManager_);
+
+	Logger::instance()->initInstance("log.txt");
 }
 
 void AsteroidsGame::closeGame() {

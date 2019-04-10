@@ -15,6 +15,7 @@
     <ClInclude Include="Asteroids.h" />
     <ClInclude Include="AsteroidsGame.h" />
     <ClInclude Include="AudioManager.h" />
+    <ClInclude Include="BlockingQueue.h" />
     <ClInclude Include="BounceOnBorderPC.h" />
     <ClInclude Include="BoundingBoxGC.h" />
     <ClInclude Include="Bullet.h" />
@@ -41,7 +42,9 @@
     <ClInclude Include="GunIC.h" />
     <ClInclude Include="ImageGC.h" />
     <ClInclude Include="InputComponent.h" />
+    <ClInclude Include="InputHandler.h" />
     <ClInclude Include="LivesViewer.h" />
+    <ClInclude Include="Logger.h" />
     <ClInclude Include="Messages_decl.h" />
     <ClInclude Include="Messages_defs.h" />
     <ClInclude Include="NaturalMovePC.h" />
@@ -66,12 +69,14 @@
     <ClInclude Include="TexturesManager.h" />
     <ClInclude Include="ThrustIC.h" />
     <ClInclude Include="Vector2D.h" />
+    <ClInclude Include="Worker.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Asteroid.cpp" />
     <ClCompile Include="Asteroids.cpp" />
     <ClCompile Include="AsteroidsGame.cpp" />
     <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="BlockingQueue.cpp" />
     <ClCompile Include="BounceOnBorderPC.cpp" />
     <ClCompile Include="BoundingBoxGC.cpp" />
     <ClCompile Include="Bullet.cpp" />
@@ -98,7 +103,9 @@
     <ClCompile Include="GunIC.cpp" />
     <ClCompile Include="ImageGC.cpp" />
     <ClCompile Include="InputComponent.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="LivesViewer.cpp" />
+    <ClCompile Include="Logger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NaturalMovePC.cpp" />
     <ClCompile Include="Observer.cpp" />
@@ -121,6 +128,7 @@
     <ClCompile Include="TexturesManager.cpp" />
     <ClCompile Include="ThrustIC.cpp" />
     <ClCompile Include="Vector2D.cpp" />
+    <ClCompile Include="Worker.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}</ProjectGuid>
