@@ -9,6 +9,7 @@
 
 class Asteroid;
 class Bullet;
+class BlackHole;
 
 namespace msg {
 

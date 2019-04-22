@@ -8,7 +8,7 @@
 #include <vector>
 
 class BlackHoles :
-	public GameObjectPool<BlackHole, 10>
+	public GameObjectPool<BlackHole, 50>
 {
 private:
 	ImageGC blackHoleImage_;

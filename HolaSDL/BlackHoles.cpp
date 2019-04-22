@@ -46,6 +46,7 @@ void BlackHoles::receive(const void *senderObj, const msg::Message &msg) {
     break;
   case msg::ROUND_START:
     blackHoleNumber_ *= 2;
+	deactiveAllObjects();
 	createBlackHoles();
     break;
   case msg::BULLET_ASTEROID_COLLISION:

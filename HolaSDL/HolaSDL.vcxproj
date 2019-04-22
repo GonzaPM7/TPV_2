@@ -16,6 +16,9 @@
     <ClInclude Include="AsteroidsGame.h" />
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="BlackHole.h" />
+    <ClInclude Include="BlackHoleAsteroidCollision.h" />
+    <ClInclude Include="BlackHoleBulletCollision.h" />
+    <ClInclude Include="BlackHoleFighterCollision.h" />
     <ClInclude Include="BlackHoles.h" />
     <ClInclude Include="BlockingQueue.h" />
     <ClInclude Include="BounceOnBorderPC.h" />
@@ -79,6 +82,9 @@
     <ClCompile Include="AsteroidsGame.cpp" />
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="BlackHole.cpp" />
+    <ClCompile Include="BlackHoleAsteroidCollision.cpp" />
+    <ClCompile Include="BlackHoleBulletCollision.cpp" />
+    <ClCompile Include="BlackHoleFighterCollision.cpp" />
     <ClCompile Include="BlackHoles.cpp" />
     <ClCompile Include="BlockingQueue.cpp" />
     <ClCompile Include="BounceOnBorderPC.cpp" />
