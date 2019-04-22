@@ -4,7 +4,7 @@ BlackHoles::BlackHoles(SDLGame *game)
     : GameObjectPool(game),
       blackHoleImage_(getGame()->getServiceLocator()->getTextures()->getTexture(
           Resources::BlackHole)),
-      rotating_() {
+      rotating_(5) {
   for (BlackHole *b : getAllObjects()) {
     b->addC(&blackHoleImage_);
     b->addC(&rotating_);
