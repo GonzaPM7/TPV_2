@@ -49,8 +49,15 @@ void BlackHoles::receive(const void *senderObj, const msg::Message &msg) {
 	deactiveAllObjects();
 	createBlackHoles();
     break;
-  case msg::BULLET_ASTEROID_COLLISION:
+  case msg::BLACKHOLE_FIGHTER_COLLISION:
+
+	  break;
+  case msg::BLACKHOLE_BULLET_COLLISION:
+
+	  break;
+  case msg::BLACKHOLE_ASTEROID_COLLISION:
 
     break;
+	
   }
 }
