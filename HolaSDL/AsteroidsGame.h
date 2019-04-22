@@ -9,6 +9,7 @@
 #include "Asteroids.h"
 #include "Bullets.h"
 #include "GameManager.h"
+#include "BlackHoles.h"
 
 class AsteroidsGame: public SDLGame {
 
@@ -36,5 +37,6 @@ private:
 	Asteroids asteroids_;
 	Bullets bullets_;
 	GameManager gameManager_;
+	BlackHoles blackHoles_;
 
 };
