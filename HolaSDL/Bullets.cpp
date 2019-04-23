@@ -39,10 +39,10 @@ void Bullets::receive(const void * senderObj, const msg::Message & msg)
 			setActive(false);
 			break;
 		case msg::BULLET_ASTEROID_COLLISION:
-		{
-			Bullet* x = static_cast<const msg::BulletAsteroidCollision&>(msg).bullet_; // bala destruido
-			x->setActive(false);
-		}
+			destroyBullet(msg);
+			break;
+		case msg::BLACKHOLE_BULLET_COLLISION:
+			destroyBullet(msg);
 			break;
 		case msg::FIGHTER_SHOOT:
 		{
@@ -64,6 +64,12 @@ void Bullets::receive(const void * senderObj, const msg::Message & msg)
 			break;
 	}
 
+}
+
+void Bullets::destroyBullet(const msg::Message & msg)
+{
+	Bullet* x = static_cast<const msg::BulletAsteroidCollision&>(msg).bullet_; // bala destruido
+	x->setActive(false);
 }
 
 

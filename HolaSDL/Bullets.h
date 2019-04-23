@@ -16,5 +16,7 @@ public:
 	virtual ~Bullets();
 
 	virtual void receive(const void* senderObj, const msg::Message& msg);
+	
+	void destroyBullet(const msg::Message& msg);
 };
 

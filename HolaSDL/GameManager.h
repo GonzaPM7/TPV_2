@@ -38,5 +38,7 @@ public:
 	int getWinner() { return winner_; }
 
 	virtual void receive(const void* senderObj, const msg::Message& msg);
+
+	void fighterDeath();
 };
 

@@ -51,22 +51,30 @@ void GameManager::receive(const void * senderObj, const msg::Message & msg)
 			Logger::instance()->log("Round End");
 			break;
 		case msg::FIGHTER_ASTEROID_COLLISION:
-			getGame()->getServiceLocator()->getAudios()->playChannel(Resources::Explosion, 0, -1);
-			getGame()->getServiceLocator()->getAudios()->haltMusic();
-			running_ = false;
-			lives_--;
-			globalSend(this, msg::Message(msg::ROUND_OVER, msg::GameManagerID, msg::Broadcast));
-			Logger::instance()->log("Round End");
-
-			if (lives_ == 0)
-			{
-				gameOver_ = true;
-				winner_ = 1;
-				score_ = 0;
-				globalSend(this, msg::Message(msg::GAME_OVER, msg::GameManagerID, msg::Broadcast));
-			}
+			fighterDeath();
+			break;
+		case msg::BLACKHOLE_FIGHTER_COLLISION:
+			fighterDeath();
 			break;
 
 	}
 
+}
+
+void GameManager::fighterDeath()
+{
+	getGame()->getServiceLocator()->getAudios()->playChannel(Resources::Explosion, 0, -1);
+	getGame()->getServiceLocator()->getAudios()->haltMusic();
+	running_ = false;
+	lives_--;
+	globalSend(this, msg::Message(msg::ROUND_OVER, msg::GameManagerID, msg::Broadcast));
+	Logger::instance()->log("Round End");
+
+	if (lives_ == 0)
+	{
+		gameOver_ = true;
+		winner_ = 1;
+		score_ = 0;
+		globalSend(this, msg::Message(msg::GAME_OVER, msg::GameManagerID, msg::Broadcast));
+	}
 }
