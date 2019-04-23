@@ -43,6 +43,7 @@ void BlackHoles::receive(const void *senderObj, const msg::Message &msg) {
   switch (msg.type_) {
   case msg::GAME_START:
     blackHoleNumber_ = 1;
+	globalSend(this, msg::BlackholesInfo(msg::BlackHoleID, msg::Broadcast, &getAllObjects()));
     break;
   case msg::ROUND_START:
     blackHoleNumber_ *= 2;
