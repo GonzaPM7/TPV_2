@@ -17,6 +17,8 @@ public:
 
 	virtual void receive(const void* senderObj, const msg::Message& msg);
 	
-	void destroyBullet(const msg::Message& msg);
+	void destroyBulletWithAsteroid(const msg::Message& msg);
+	void destroyBulletWithBlackhole(const msg::Message& msg);
+
 };
 
