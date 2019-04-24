@@ -19,8 +19,11 @@ private:
 public:
 	BlackHoles(SDLGame* game);
 	~BlackHoles();
-	void createBlackHoles();
 	virtual void receive(const void* senderObj, const msg::Message& msg);
+
+	void createBlackHoles();
+	void onGameStart(const msg::Message& msg);
+	void onRoundStart();
 
 };
 

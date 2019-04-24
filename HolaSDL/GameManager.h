@@ -43,5 +43,9 @@ public:
 
   virtual void receive(const void *senderObj, const msg::Message &msg);
 
+  void onGameStart();
+  void onRoundStart();
+  void onAsteroidDestroyed(const msg::Message &msg);
+  void noMoreAsteroids(const msg::Message &msg);
   void fighterDeath();
 };

@@ -37,18 +37,33 @@ void Fighter::receive(const void * senderObj, const msg::Message & msg)
 	switch(msg.type_)
 	{
 	case msg::GAME_START:
-		// enviar mensaje
-		globalSend(this, msg::FighterInfo(msg::Fighter, msg::Broadcast, this));
+		onGameStart(msg);
 		break;
 	case msg::ROUND_START:
-		setPosition(Vector2D(getGame()->getWindowWidth() / 2, getGame()->getWindowHeight() / 2));
-		setVelocity(Vector2D(0, 0));
-		setActive(true);
+		onRoundStart();
 		break;
 	case msg::ROUND_OVER:
-		setActive(false);
+		onRoundOver();
 		break;
 	}
 
+}
+
+void Fighter::onGameStart(const msg::Message & msg)
+{
+	// enviar mensaje
+	globalSend(this, msg::FighterInfo(msg::Fighter, msg::Broadcast, this));
+}
+
+void Fighter::onRoundStart()
+{
+	setPosition(Vector2D(getGame()->getWindowWidth() / 2, getGame()->getWindowHeight() / 2));
+	setVelocity(Vector2D(0, 0));
+	setActive(true);
+}
+
+void Fighter::onRoundOver()
+{
+	setActive(false);
 }
 

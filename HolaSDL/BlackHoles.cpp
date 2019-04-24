@@ -15,8 +15,22 @@ BlackHoles::BlackHoles(SDLGame *game)
 
 BlackHoles::~BlackHoles() {}
 
-void BlackHoles::createBlackHoles()
-{
+
+
+void BlackHoles::receive(const void *senderObj, const msg::Message &msg) {
+  Container::receive(senderObj, msg);
+
+  switch (msg.type_) {
+  case msg::GAME_START:
+    onGameStart(msg);
+    break;
+  case msg::ROUND_START:
+    onRoundStart();
+    break;
+  }
+}
+
+void BlackHoles::createBlackHoles() {
 	for (int i = 0; i < blackHoleNumber_; i++) {
 		BlackHole *b = getUnusedObject();
 		b->setWidth(50);
@@ -24,8 +38,8 @@ void BlackHoles::createBlackHoles()
 		int x = getGame()->getWindowWidth() / 2;
 		int y = getGame()->getWindowHeight() / 2;
 
-		while (x == getGame()->getWindowWidth() / 2 && y == getGame()->getWindowHeight() / 2)
-		{
+		while (x == getGame()->getWindowWidth() / 2 &&
+			y == getGame()->getWindowHeight() / 2) {
 			x = getGame()->getServiceLocator()->getRandomGenerator()->nextInt(
 				0, getGame()->getWindowWidth());
 			y = getGame()->getServiceLocator()->getRandomGenerator()->nextInt(
@@ -37,18 +51,14 @@ void BlackHoles::createBlackHoles()
 	}
 }
 
-void BlackHoles::receive(const void *senderObj, const msg::Message &msg) {
-  Container::receive(senderObj, msg);
+void BlackHoles::onGameStart(const msg::Message &msg) {
+	blackHoleNumber_ = 1;
+	globalSend(this, msg::BlackholesInfo(msg::BlackHoleID, msg::Broadcast,
+		&getAllObjects()));
+}
 
-  switch (msg.type_) {
-  case msg::GAME_START:
-    blackHoleNumber_ = 1;
-	globalSend(this, msg::BlackholesInfo(msg::BlackHoleID, msg::Broadcast, &getAllObjects()));
-    break;
-  case msg::ROUND_START:
-    blackHoleNumber_ *= 2;
+void BlackHoles::onRoundStart() {
+	blackHoleNumber_ *= 2;
 	deactiveAllObjects();
 	createBlackHoles();
-    break;
-  }
 }

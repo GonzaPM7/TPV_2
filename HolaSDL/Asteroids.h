@@ -16,5 +16,11 @@ public:
 	~Asteroids();
 
 	virtual void receive(const void* senderObj, const msg::Message& msg);
+
+	void onGameStart(const msg::Message& msg);
+	void onRoundStart();
+	void onRoundOver();
+	void onCollisionWithBullet(const msg::Message& msg);
+	void onCollisionWithBlackhole(const msg::Message& msg);
 };
 

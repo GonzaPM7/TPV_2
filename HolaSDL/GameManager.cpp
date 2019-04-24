@@ -27,30 +27,16 @@ void GameManager::receive(const void *senderObj, const msg::Message &msg) {
 
   switch (msg.type_) {
   case msg::GAME_START:
-    gameOver_ = false;
-    winner_ = 0;
-    lives_ = maxLives_;
+    onGameStart();
     break;
   case msg::ROUND_START:
-    running_ = true;
-    getGame()->getServiceLocator()->getAudios()->playMusic(
-        Resources::ImperialMarch, -1);
-    Logger::instance()->log("Round Start");
+    onRoundStart();
     break;
-  case msg::ASTEROID_DESTROYED: {
-    int points = static_cast<const msg::AsteroidDestroyed &>(msg).points_;
-    score_ += points;
-  } break;
+  case msg::ASTEROID_DESTROYED:
+    onAsteroidDestroyed(msg);
+    break;
   case msg::NO_MORE_ASTEROIDS:
-    running_ = false;
-    gameOver_ = true;
-    winner_ = 2;
-    getGame()->getServiceLocator()->getAudios()->haltMusic();
-    globalSend(this, msg::Message(msg::ROUND_OVER, msg::GameManagerID,
-                                  msg::Broadcast));
-    globalSend(
-        this, msg::Message(msg::GAME_OVER, msg::GameManagerID, msg::Broadcast));
-    Logger::instance()->log("Round End");
+    noMoreAsteroids(msg);
     break;
   case msg::FIGHTER_ASTEROID_COLLISION:
     fighterDeath();
@@ -59,6 +45,36 @@ void GameManager::receive(const void *senderObj, const msg::Message &msg) {
     fighterDeath();
     break;
   }
+}
+
+void GameManager::onGameStart() {
+  gameOver_ = false;
+  winner_ = 0;
+  lives_ = maxLives_;
+}
+
+void GameManager::onRoundStart() {
+  running_ = true;
+  getGame()->getServiceLocator()->getAudios()->playMusic(
+      Resources::ImperialMarch, -1);
+  Logger::instance()->log("Round Start");
+}
+
+void GameManager::onAsteroidDestroyed(const msg::Message &msg) {
+  int points = static_cast<const msg::AsteroidDestroyed &>(msg).points_;
+  score_ += points;
+}
+
+void GameManager::noMoreAsteroids(const msg::Message &msg) {
+	running_ = false;
+	gameOver_ = true;
+	winner_ = 2;
+	getGame()->getServiceLocator()->getAudios()->haltMusic();
+	globalSend(this, msg::Message(msg::ROUND_OVER, msg::GameManagerID,
+		msg::Broadcast));
+	globalSend(
+		this, msg::Message(msg::GAME_OVER, msg::GameManagerID, msg::Broadcast));
+	Logger::instance()->log("Round End");
 }
 
 void GameManager::fighterDeath() {
