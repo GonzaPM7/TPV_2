@@ -66,6 +66,10 @@ void AsteroidsGame::handleInput(Uint32 time) {
 
 
 void AsteroidsGame::update(Uint32 time) {
+	if (InputHandler::getInstance()->isAnyKeyDown()) {
+		if (InputHandler::getInstance()->isKeyDown(SDLK_ESCAPE))
+			exit_ = true;
+	}
 	for (GameObject* o : actors_) {
 		o->update(time);
 	}
